@@ -23,11 +23,9 @@ namespace ConsoleUI
             List<TimeSheetEntryModel> timeSheets = LoadTimeSheets();
 
             List<CustomerModel> customers = DataAccess.GetCustomers();
-            foreach (var customer in customers)
-            {
-                SendEmailToCustomer(timeSheets, customer.CustomerName, customer.HourlyRate);
-            }
-           
+            
+            customers.ForEach(x => SendEmailToCustomer(timeSheets, x));
+
             totalPaidHoures = 0;
             for (i = 0; i < timeSheets.Count; i++)
             {
