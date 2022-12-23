@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrownfieldLibrary
+namespace BrownfieldLibrary.Models
 {
-    public class TimeSheetEntry
+    public class TimeSheetEntryModel
     {
         public string WorkDone { get; set; }
         public double HoursWorked { get; set; }

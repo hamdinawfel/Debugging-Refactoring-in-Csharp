@@ -6,3 +6,14 @@ C:\Workspace\BrownfieldDemo_Start\ConsoleUI\obj\Debug\ConsoleUI.csproj.Suggested
 C:\Workspace\BrownfieldDemo_Start\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
 C:\Workspace\BrownfieldDemo_Start\ConsoleUI\obj\Debug\ConsoleUI.exe
 C:\Workspace\BrownfieldDemo_Start\ConsoleUI\obj\Debug\ConsoleUI.pdb
+C:\Workspace\Debugging-Refactoring-in-Csharp\ConsoleUI\bin\Debug\ConsoleUI.exe.config
+C:\Workspace\Debugging-Refactoring-in-Csharp\ConsoleUI\bin\Debug\ConsoleUI.exe
+C:\Workspace\Debugging-Refactoring-in-Csharp\ConsoleUI\bin\Debug\ConsoleUI.pdb
+C:\Workspace\Debugging-Refactoring-in-Csharp\ConsoleUI\bin\Debug\BrownfieldLibrary.dll
+C:\Workspace\Debugging-Refactoring-in-Csharp\ConsoleUI\bin\Debug\BrownfieldLibrary.pdb
+C:\Workspace\Debugging-Refactoring-in-Csharp\ConsoleUI\obj\Debug\ConsoleUI.csproj.AssemblyReference.cache
+C:\Workspace\Debugging-Refactoring-in-Csharp\ConsoleUI\obj\Debug\ConsoleUI.csproj.SuggestedBindingRedirects.cache
+C:\Workspace\Debugging-Refactoring-in-Csharp\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
+C:\Workspace\Debugging-Refactoring-in-Csharp\ConsoleUI\obj\Debug\ConsoleUI.csproj.CopyComplete
+C:\Workspace\Debugging-Refactoring-in-Csharp\ConsoleUI\obj\Debug\ConsoleUI.exe
+C:\Workspace\Debugging-Refactoring-in-Csharp\ConsoleUI\obj\Debug\ConsoleUI.pdb

@@ -8,7 +8,7 @@ namespace BrownfieldLibrary.Models
 {
     public class CustomerModel
     {
-        public string CampanyName { get; set; }
+        public string CustomerName { get; set; }
         public decimal HourlyRate { get; set; }
     }
 }
