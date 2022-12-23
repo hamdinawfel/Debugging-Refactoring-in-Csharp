@@ -6,10 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// Please note - THIS IS A BAD APPLICATION - DO NOT REPLICATE WHAT IT DOES
-// This application was designed to simulate a poorly-built application that
-// you need to support. Do not follow any of these practices. This is for 
-// demonstration purposes only. You have been warned.
+// TODO 
+// 1 : add database for data access
+// 2 : replace Simulating seding email with real email sender
+// 3 : add frontend side with Razor page
+// 4 : generate csv file 
+// 5 : add unit test
+// 6 : rebuild the application wthe clean architecture
+// 7 : deploy the app
+// 8 : open sourced the app and create pull request conduct file*
+// 9 : write a blog post
+
 namespace ConsoleUI
 {
     class Program
