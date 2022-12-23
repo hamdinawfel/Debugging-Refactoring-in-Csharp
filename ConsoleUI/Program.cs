@@ -16,34 +16,26 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            string w;
-            int i;
-            double totalPaidHoures;
-
             List<TimeSheetEntryModel> timeSheets = LoadTimeSheets();
-
             List<CustomerModel> customers = DataAccess.GetCustomers();
+            EmployeeModel currentEmployee = DataAccess.GetCurrentEmployee();
             
             customers.ForEach(x => SendEmailToCustomer(timeSheets, x));
 
-            totalPaidHoures = 0;
-            for (i = 0; i < timeSheets.Count; i++)
-            {
-                totalPaidHoures += timeSheets[i].HoursWorked;
-            }
-            if (totalPaidHoures > 40)
-            {
-                Console.WriteLine("You will get paid $" + (((totalPaidHoures-40) * 15) + (40 * 10 )) + " for your work.");
-            }
-            else
-            {
-                Console.WriteLine("You will get paid $" + totalPaidHoures * 10 + " for your time.");
-            }
+            PayEmployee(timeSheets, currentEmployee);
+
             Console.WriteLine();
             Console.Write("Press any key to exit application...");
             Console.ReadKey();
+            Console.WriteLine();
         }
 
+        private static void PayEmployee(List<TimeSheetEntryModel> timeSheets, EmployeeModel employee)
+        {
+            decimal employeePaidAmount = TimeSheetProcessor.CalculateEmployeePaid(timeSheets, employee);
+            Console.WriteLine($" { employee.Name } will get paid $ {employeePaidAmount} for your time.");
+            Console.WriteLine();
+        }
         private static List<TimeSheetEntryModel> LoadTimeSheets()
         {
             List<TimeSheetEntryModel> output = new List<TimeSheetEntryModel>();
@@ -76,14 +68,13 @@ namespace ConsoleUI
 
             return output;
         }
-        public static void SendEmailToCustomer(List<TimeSheetEntryModel> timeSheets, CustomerModel customer)
+        private static void SendEmailToCustomer(List<TimeSheetEntryModel> timeSheets, CustomerModel customer)
         {
             double totalPaidHoures = TimeSheetProcessor.GetHouresWorkedForCompany(timeSheets, customer.CustomerName);
 
             Console.WriteLine($"Simulating Sending email to { customer.CustomerName }");
             Console.WriteLine("Your bill is $" + (decimal)totalPaidHoures * customer.HourlyRate + " for the hours worked.");
+            Console.WriteLine();
         }
     }
-
-    
 }

@@ -13,12 +13,16 @@ namespace BrownfieldLibrary
         {
             List<CustomerModel> output = new List<CustomerModel>();
 
-            output.Add(new CustomerModel() { CustomerName = "acme", HourlyRate = 150 });
-            output.Add(new CustomerModel() { CustomerName = "abc", HourlyRate = 125 });
+            output.Add(new CustomerModel { CustomerName = "acme", HourlyRate = 150 });
+            output.Add(new CustomerModel { CustomerName = "abc", HourlyRate = 125 });
             
             return output;
+        }
 
-
+        public static EmployeeModel GetCurrentEmployee()
+        {
+            EmployeeModel output = new EmployeeModel{ Name = "Nawfel Hamdi", HourlyRate = 10 };
+            return output;
         }
     }
 }
