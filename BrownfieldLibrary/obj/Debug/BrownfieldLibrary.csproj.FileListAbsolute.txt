@@ -1,0 +1,6 @@
+C:\Workspace\Debugging-Refactoring-in-Csharp\BrownfieldLibrary\bin\Debug\BrownfieldLibrary.dll
+C:\Workspace\Debugging-Refactoring-in-Csharp\BrownfieldLibrary\bin\Debug\BrownfieldLibrary.pdb
+C:\Workspace\Debugging-Refactoring-in-Csharp\BrownfieldLibrary\obj\Debug\BrownfieldLibrary.csproj.AssemblyReference.cache
+C:\Workspace\Debugging-Refactoring-in-Csharp\BrownfieldLibrary\obj\Debug\BrownfieldLibrary.csproj.CoreCompileInputs.cache
+C:\Workspace\Debugging-Refactoring-in-Csharp\BrownfieldLibrary\obj\Debug\BrownfieldLibrary.dll
+C:\Workspace\Debugging-Refactoring-in-Csharp\BrownfieldLibrary\obj\Debug\BrownfieldLibrary.pdb

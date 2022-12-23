@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BrownfieldLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,44 +15,46 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            string w, rowTimeWorkd;
+            string w;
             int i;
-            double t, ttl;
-            List<TimeSheetEntry> ents = new List<TimeSheetEntry>();
-            Console.Write("Enter what you did: ");
-            w = Console.ReadLine();
-            Console.Write("How long did you do it for: ");
+            double totalPaidHoures;
 
-            rowTimeWorkd = Console.ReadLine();
-            while(!double.TryParse(rowTimeWorkd, out t))
+            List<TimeSheetEntry> timeSheets = LoadTimeSheets();
+
+            SendEmailToCampany(timeSheets, "acme", 150);
+            SendEmailToCampany(timeSheets, "abc", 125);
+           
+            totalPaidHoures = 0;
+            for (i = 0; i < timeSheets.Count; i++)
             {
-                Console.WriteLine();
-                Console.WriteLine("Invaled intred work");
-                Console.Write("How long did you do it for: ");
-                rowTimeWorkd = Console.ReadLine();
+                totalPaidHoures += timeSheets[i].HoursWorked;
             }
-
-            t = double.Parse(Console.ReadLine());
-            TimeSheetEntry ent = new TimeSheetEntry();
-            ent.HoursWorked = t;
-            ent.WorkDone = w;
-            ents.Add(ent);
-            Console.Write("Do you want to enter more time (yes/no):");
-            var answer = Console.ReadLine();
-            bool cont = false;
-            if(answer.ToLower() == "yes")
+            if (totalPaidHoures > 40)
             {
-                cont = true;
+                Console.WriteLine("You will get paid $" + (((totalPaidHoures-40) * 15) + (40 * 10 )) + " for your work.");
             }
+            else
+            {
+                Console.WriteLine("You will get paid $" + totalPaidHoures * 10 + " for your time.");
+            }
+            Console.WriteLine();
+            Console.Write("Press any key to exit application...");
+            Console.ReadKey();
+        }
 
-            while (cont == true)
+        private static List<TimeSheetEntry> LoadTimeSheets()
+        {
+            List<TimeSheetEntry> output = new List<TimeSheetEntry>();
+            string entreMoreTimeSheet = "";
+            do
             {
                 Console.Write("Enter what you did: ");
-                w = Console.ReadLine();
+                string workDone = Console.ReadLine();
                 Console.Write("How long did you do it for: ");
 
-                rowTimeWorkd = Console.ReadLine();
-                while (!double.TryParse(rowTimeWorkd, out t))
+                string rowTimeWorkd = Console.ReadLine();
+                double houresWorked;
+                while (!double.TryParse(rowTimeWorkd, out houresWorked))
                 {
                     Console.WriteLine();
                     Console.WriteLine("Invaled intred work");
@@ -59,64 +62,26 @@ namespace ConsoleUI
                     rowTimeWorkd = Console.ReadLine();
                 }
 
-                t = double.Parse(Console.ReadLine());
-                ent = new TimeSheetEntry();
-                ent.HoursWorked = t;
-                ent.WorkDone = w;
-                ents.Add(ent);
+                TimeSheetEntry timeSheet = new TimeSheetEntry();
+                timeSheet.HoursWorked = houresWorked;
+                timeSheet.WorkDone = workDone;
+                output.Add(timeSheet);
 
                 Console.Write("Do you want to enter more time:");
-                answer = Console.ReadLine();
-                cont = false;
-                if (answer.ToLower() == "yes")
-                {
-                    cont = true;
-                }
-            }
-            ttl = 0;
-            for (i = 0; i < ents.Count; i++)
-            {
-                if (ents[i].WorkDone.ToLower().Contains("acme"))
-                {
-                    ttl += ents[i].HoursWorked;
-                }
-            }
-            Console.WriteLine("Simulating Sending email to Acme");
-            Console.WriteLine("Your bill is $" + ttl * 150 + " for the hours worked.");
+                entreMoreTimeSheet = Console.ReadLine();
 
-            ttl = 0;
-            for (i = 0; i < ents.Count; i++)
-            {
-                if (ents[i].WorkDone.ToLower().Contains("abc"))
-                {
-                    ttl += ents[i].HoursWorked;
-                }
-            }
-            Console.WriteLine("Simulating Sending email to ABC");
-            Console.WriteLine("Your bill is $" + ttl * 125 + " for the hours worked.");
+            } while (entreMoreTimeSheet.ToLower() == "yes");
 
-            ttl = 0;
-            for (i = 0; i < ents.Count; i++)
-            {
-                ttl += ents[i].HoursWorked;
-            }
-            if (ttl > 40)
-            {
-                Console.WriteLine("You will get paid $" + (((ttl-40) * 15) + (40 * 10 )) + " for your work.");
-            }
-            else
-            {
-                Console.WriteLine("You will get paid $" + ttl * 10 + " for your time.");
-            }
-            Console.WriteLine();
-            Console.Write("Press any key to exit application...");
-            Console.ReadKey();
+            return output;
+        }
+        public static void SendEmailToCampany(List<TimeSheetEntry> timeSheets, string campanyName, int hourRate)
+        {
+            double totalPaidHoures = TimeSheetProcessor.GetHouresWorkedForCompany(timeSheets, campanyName);
+
+            Console.WriteLine($"Simulating Sending email to {campanyName}");
+            Console.WriteLine("Your bill is $" + totalPaidHoures * hourRate + " for the hours worked.");
         }
     }
 
-    public class TimeSheetEntry
-    {
-        public string WorkDone;
-        public double HoursWorked;
-    }
+    
 }
